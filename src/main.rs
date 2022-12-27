@@ -39,6 +39,7 @@ fn rocket() -> _ {
         )
 }
 
+
 // Unit testings
 #[cfg(test)]
 mod tests;

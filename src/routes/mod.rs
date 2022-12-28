@@ -8,7 +8,7 @@ pub mod product;
 
 
 /// This is a description. <br />You can do simple html <br /> like <b>this<b/>
-#[openapi(tag = "jamal")]
+#[openapi(tag = "root")]
 #[get("/")]
 pub fn index() -> Value {
     json!({

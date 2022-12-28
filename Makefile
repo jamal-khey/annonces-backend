@@ -1,7 +1,7 @@
-
-copy:
-	scp -i key.pem *.sh ubuntu@ec2-54-247-35-209.eu-west-1.compute.amazonaws.com
-	scp -i key.pem *.conf ubuntu@ec2-54-247-35-209.eu-west-1.compute.amazonaws.com:/etc/nginx/conf.d/
+run:
+	./target/debug/rust-rocket-sample
+build:
+	cargo build
 
 deploy:
 	make bundle

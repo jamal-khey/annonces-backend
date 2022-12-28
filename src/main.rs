@@ -27,6 +27,7 @@ fn rocket() -> _ {
                 routes::customer::post_customer,
                 routes::customer::patch_customer_by_id,
                 routes::customer::delete_customer_by_id,
+                routes::product::get_products,
                 routes::product::post_product
             ],
         )

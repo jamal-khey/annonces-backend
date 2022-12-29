@@ -1,4 +1,3 @@
-use rocket::serde::json::Json;
 use rocket_okapi::openapi;
 use rocket::serde::json::{json, Value};
 

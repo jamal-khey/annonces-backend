@@ -13,7 +13,7 @@ use crate::models::product::{ProductInput, Product};
 
 /// create a customer document
 #[openapi(tag = "Product")]
-#[post("/product", data = "<input>")]
+#[post("/setproduct", data = "<input>")]
 pub async fn post_product(
     db: &State<Database>,
     input: Json<ProductInput>,

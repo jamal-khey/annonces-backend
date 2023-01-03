@@ -1,4 +1,4 @@
-# rust-rocket-sample
+# rust backend with rocket and mangodb
 [![CI](https://github.com/psychodrom/annonces-backend/actions/workflows/ci.yaml/badge.svg)](https://github.com/psychodrom/annonces-backend/actions/workflows/ci.yaml)
 
 Fully working CRUD REST API using 

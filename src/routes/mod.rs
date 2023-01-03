@@ -4,6 +4,7 @@ use rocket::serde::json::{json, Value};
 
 pub mod customer;
 pub mod product;
+pub mod admin;
 
 
 /// This is a description. <br />You can do simple html <br /> like <b>this<b/>

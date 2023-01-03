@@ -1,7 +1,7 @@
 # rust-rocket-sample
-[![CI](https://github.com/TaeyoonKwon/rust-rocket-sample/actions/workflows/ci.yaml/badge.svg)](https://github.com/TaeyoonKwon/rust-rocket-sample/actions/workflows/ci.yaml)
+[![CI](https://github.com/psychodrom/annonces-backend/actions/workflows/ci.yaml/badge.svg)](https://github.com/psychodrom/annonces-backend/actions/workflows/ci.yaml)
 
-Fully working CRUD REST API example using 
+Fully working CRUD REST API using 
 - Rust (stable)
 - Rocket.rs
 - mongodb
@@ -12,14 +12,17 @@ Fully working CRUD REST API example using
 - Establish MongoDB connection using rocket Adhoc fairing.
 - Custom error handlings with rocket Responder and okapi OpenApiGenerator.
 - CORS fairing and Counter fairing to demonstrate how fairing works.
-- Example model Customer to demonstrate how Rust structs interact with MongoDB.
 - Request guard using ApiKey.
-- REST API endpoints with simple CRUD using Customer model.
 - Implement Open API documentation using okapi.
 - Test codes to test API endpoints.
 
 
 ## 🔧 Building and Testing
+
+### See Makefile for all commands
+
+### developpement mode
+> make dev
 
 ### debug mode
 > cargo run

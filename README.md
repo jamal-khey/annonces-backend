@@ -16,6 +16,15 @@ Fully working CRUD REST API using
 - Implement Open API documentation using okapi.
 - Test codes to test API endpoints.
 
+## deploy
+> setup.sh
+
+to the ploy the projet on production
+
+> deploy-rust.sh
+
+on the remote server to install the dependencies (rust compiler ..) 
+to zip the code sources , copy it to the server , compile and run 
 
 ## 🔧 Building and Testing
 
@@ -38,10 +47,3 @@ Fully working CRUD REST API using
 
 ℹ️ _You should create your own `.env` file including `MONGO_URI`, `MONGO_DB_NAME`, and `API_KEY` to run it._
 
-## deploy
-
-to the ploy the projet on production
-> setup.sh
-on the remote server to install the dependencies (rust compiler ..)
-> deploy-rust.sh
-to zip the code sources , copy it to the server , compile and run 

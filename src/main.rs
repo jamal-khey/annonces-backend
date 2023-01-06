@@ -29,7 +29,8 @@ fn rocket() -> _ {
                 routes::customer::delete_customer_by_id,
                 routes::product::get_products,
                 routes::product::post_product,
-                routes::admin::get_announcement
+                routes::admin::get_announcement,
+                routes::ads::search_ads_handler
             ],
         )
         .mount(

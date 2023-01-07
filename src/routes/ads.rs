@@ -1,24 +1,30 @@
 use mongodb::Database;
 use rocket::{State, serde::json::Json};
-use rocket_okapi::openapi;
+use rocket_okapi::{openapi, JsonSchema};
 
 use crate::{models::{ads::{AdInput, Status, AdsReportInput, PersonalInfo, AdGallery, PriceDetails}}, errors::response::MyError};
+use serde::{Deserialize, Serialize};
 
-
+#[allow(non_snake_case)]
+#[derive(Debug, Serialize, Deserialize, JsonSchema, Clone)]
+pub struct AllAds {
+    message: String,
+    data: Vec<AdInput>
+}
 /// search and filter ads controller
 #[openapi(tag = "Ads")]
 #[get("/api/v1/user/search/ads")]
 pub async fn search_ads_handler(
     db: &State<Database>,
-) -> Result<Json<Vec<AdInput>>, MyError> {
+) -> Result<Json<AllAds>, MyError> {
     let st = Status{
         isApproved: true,
         isPublished: true,
         isFeatured: true,
         isActive: true,
     };
-    let priceDetails =  PriceDetails{
-        currency: String::from("default"),
+    let price_details =  PriceDetails{
+        currency: String::from("$"),
         priceType: String::from("default"),
         price: 9999,
     };
@@ -34,8 +40,8 @@ pub async fn search_ads_handler(
     };
 
     let adGalery = AdGallery{
-            url: String::from("default"),
-            public_id: String::from("default"),
+            url: String::from("https://m.media-amazon.com/images/I/71DNwYciRsL._SL1500_.jpg"),
+            public_id: String::from(""),
     };
     
     
@@ -51,7 +57,7 @@ pub async fn search_ads_handler(
     adType: String::from("default"),
     description: String::from("default"),
     specifications: vec!(String::from("default")),
-    priceDetails: priceDetails,
+    priceDetails: price_details,
     adGallery: vec!(adGalery),
     personalInfo: personalInfo,
     specialNote: String::from("default"),
@@ -60,7 +66,11 @@ pub async fn search_ads_handler(
     };
 
     // let annoncement = AdInput{ data: String::from("bienvenue")};
-    Ok(Json(vec!(annonce)))
+    let addAds = AllAds{
+        message: String::from("Successfully find all ads"),
+        data: vec!(annonce)
+    };
+    Ok(Json(addAds))
 }
 
 

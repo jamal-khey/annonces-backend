@@ -1,5 +1,5 @@
 run:
-	./target/debug/rust-rocket-sample
+	./target/debug/rust-server-bin
 build:
 	cargo build
 dev:

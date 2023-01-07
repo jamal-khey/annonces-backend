@@ -28,7 +28,7 @@ pub async fn search_ads_handler(
         priceType: String::from("default"),
         price: 9999,
     };
-    let personalInfo = PersonalInfo{
+    let personal_info = PersonalInfo{
         fullName: String::from("default"),
         email: String::from("default"),
         phone: String::from("default"),
@@ -39,7 +39,7 @@ pub async fn search_ads_handler(
         reason: String::from("default")
     };
 
-    let adGalery = AdGallery{
+    let ad_galery = AdGallery{
             url: String::from("https://m.media-amazon.com/images/I/71DNwYciRsL._SL1500_.jpg"),
             public_id: String::from(""),
     };
@@ -58,19 +58,18 @@ pub async fn search_ads_handler(
     description: String::from("default"),
     specifications: vec!(String::from("default")),
     priceDetails: price_details,
-    adGallery: vec!(adGalery),
-    personalInfo: personalInfo,
+    adGallery: vec!(ad_galery),
+    personalInfo: personal_info,
     specialNote: String::from("default"),
     adsReport: vec!(addrep),
  
     };
 
-    // let annoncement = AdInput{ data: String::from("bienvenue")};
-    let addAds = AllAds{
+    let add_ads = AllAds{
         message: String::from("Successfully find all ads"),
         data: vec!(annonce)
     };
-    Ok(Json(addAds))
+    Ok(Json(add_ads))
 }
 
 

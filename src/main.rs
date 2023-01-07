@@ -30,7 +30,8 @@ fn rocket() -> _ {
                 routes::product::get_products,
                 routes::product::post_product,
                 routes::admin::get_announcement,
-                routes::ads::search_ads_handler
+                routes::ads::search_ads_handler,
+                routes::category::get_category,
             ],
         )
         .mount(

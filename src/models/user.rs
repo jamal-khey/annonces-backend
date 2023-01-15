@@ -92,3 +92,9 @@ pub struct UserInput {
     pub cloudinary_id: String,
     pub role: Role
 }
+
+#[allow(non_snake_case)]
+#[derive(Debug, Serialize, Deserialize, JsonSchema, Clone)]
+pub struct CheckUserNameInput{
+    pub userName: String
+}

@@ -22,3 +22,6 @@ upload_deploy_script:
 
 execute_deploy_script:
 	ssh -i key.pem ubuntu@${HOST} "bash deploy-rust.sh"
+
+test:
+	cargo test --package rust-server-bin --bin rust-server-bin -- tests::tests --nocapture 

@@ -7,6 +7,7 @@ pub mod product;
 pub mod admin;
 pub mod ads;
 pub mod category;
+pub mod user;
 
 
 /// This is a description. <br />You can do simple html <br /> like <b>this<b/>

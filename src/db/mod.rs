@@ -6,6 +6,7 @@ use std::env;
 
 pub mod customer;
 pub mod product;
+pub mod user;
 
 pub fn init() -> AdHoc {
     AdHoc::on_ignite("Connecting to MongoDB", |rocket| async {

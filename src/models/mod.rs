@@ -4,3 +4,4 @@ pub mod product;
 pub mod admin;
 pub mod ads;
 pub mod category;
+pub mod user;

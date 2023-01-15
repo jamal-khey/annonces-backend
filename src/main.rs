@@ -32,6 +32,7 @@ fn rocket() -> _ {
                 routes::admin::get_announcement,
                 routes::ads::search_ads_handler,
                 routes::category::get_category,
+                routes::user::signup
             ],
         )
         .mount(

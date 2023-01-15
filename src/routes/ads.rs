@@ -15,7 +15,7 @@ pub struct AllAds {
 #[openapi(tag = "Ads")]
 #[get("/api/v1/user/search/ads")]
 pub async fn search_ads_handler(
-    db: &State<Database>,
+    _db: &State<Database>,
 ) -> Result<Json<AllAds>, MyError> {
     let st = Status{
         isApproved: true,

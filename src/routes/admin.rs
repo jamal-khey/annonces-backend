@@ -9,7 +9,7 @@ use crate::{models::admin::Announcement, errors::response::MyError};
 #[openapi(tag = "Admin")]
 #[get("/api/v1/admin/announcement")]
 pub async fn get_announcement(
-    db: &State<Database>,
+    _db: &State<Database>,
 ) -> Result<Json<Announcement>, MyError> {
 
     let annoncement = Announcement{ data: String::from("bienvenue")};

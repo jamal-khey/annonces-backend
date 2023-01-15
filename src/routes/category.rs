@@ -16,7 +16,7 @@ pub struct AllCategory{
 #[openapi(tag = "Category")]
 #[get("/api/v1/ads/category")]
 pub async fn get_category(
-    db: &State<Database>,
+    _db: &State<Database>,
 ) -> Result<Json<AllCategory>, MyError> {
 
     let status_category = CategoryStatus{

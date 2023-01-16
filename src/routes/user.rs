@@ -18,11 +18,13 @@ use crate::models::user::{UserInput, CheckUserNameInput};
 pub async fn signup(
     db: &State<Database>,
     input: Json<UserInput>,
-) -> Result<Json<String>, BadRequest<Json<MessageResponse>>> {
+) -> Result<Json<MessageResponse>, BadRequest<Json<MessageResponse>>> {
     // can set with a single error like this.
     match user::insert_user(&db, input).await {
         Ok(_user_doc_id) => {
-            return Ok(Json(_user_doc_id));
+            return Ok(Json(MessageResponse {
+                message: format!("User added"),
+            }));
         }
         Err(_error) => {
             println!("{:?}", _error);

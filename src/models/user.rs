@@ -84,12 +84,12 @@ pub struct UserInput {
     pub email: String,
     pub password: String,
     pub isConfirmed: bool,
-    pub packageDetails: PackageDetails,
-    pub ratingDetails: RatingDetails,
-    pub resetLink: String,
-    pub phoneNumber: String,
-    pub avatar: String,
-    pub cloudinary_id: String,
+    pub packageDetails: Option<PackageDetails>,
+    pub ratingDetails: Option<RatingDetails>,
+    pub resetLink: Option<String>,
+    pub phoneNumber: Option<String>,
+    pub avatar: Option<String>,
+    pub cloudinary_id: Option<String>,
     pub role: Role
 }
 

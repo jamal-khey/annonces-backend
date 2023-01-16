@@ -4,6 +4,8 @@ extern crate rocket;
 use dotenv::dotenv;
 use rocket_okapi::openapi_get_routes;
 use rocket_okapi::swagger_ui::{make_swagger_ui, SwaggerUIConfig};
+use rocket::Request;
+use rocket::http::Status;
 
 mod db;
 mod errors;
@@ -12,12 +14,24 @@ mod models;
 mod request_guards;
 mod routes;
 
+// #[catch(404)]
+// fn not_found(req: &Request) -> String {
+//     print!("{}",req.to_string());
+//     format!("I couldn't find '{}'. Try something else?", req.uri())
+// }
+
+// #[catch(default)]
+// fn default(status: Status, req: &Request) -> String {
+//     format!("{} ({})", status, req.uri())
+// }
+
 #[launch]
 fn rocket() -> _ {
     dotenv().ok();
     rocket::build()
         .attach(db::init())
         .attach(fairings::cors::CORS)
+        // .register("/", catchers![not_found, default])
         .mount(
             "/",
             openapi_get_routes![

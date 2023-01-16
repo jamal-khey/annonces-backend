@@ -41,21 +41,18 @@ pub async fn signup(
 pub async fn check_user_name_exist(
     db: &State<Database>,
     input: Json<CheckUserNameInput>,
-) -> Result<Json<String>, BadRequest<Json<MessageResponse>>> {
+) -> Result<Json<MessageResponse>, BadRequest<Json<MessageResponse>>> {
     
     let user = user::check_user_name_exist(db, input.into_inner().userName).await;
     match user {
-        Some(_) => Ok(Json("ok".to_owned())),
-        None => Ok(Json("NotOk".to_owned())),
+        None => {
+            Ok(Json(MessageResponse { message: format!("User Name available"),}
+        ))
+        },
+        Some(_) => {
+            return Err(BadRequest(Some(Json(MessageResponse {
+                message: format!("User Name already exist"),
+            }))));
+        }
     }
-    
 }
-
-// if (userNameExist) {
-// 			return res.status(400).send({
-// 				message: 'User Name already exist',
-// 			})
-// 		}
-// 		res.status(200).send({
-// 			message: 'User Name available',
-// 		})

@@ -11,6 +11,7 @@ pub async fn insert_user(
     db: &Database,
     input: Json<UserInput>,
 ) -> mongodb::error::Result<String> {
+    
     let collection = db.collection::<UserInput>("User");
 
     let _created_at: DateTime = DateTime::now();
@@ -42,3 +43,21 @@ pub async fn check_user_name_exist(
     };
 
 }
+
+
+pub async fn find_user(
+  db: &Database,
+  email: String) -> mongodb::error::Result<Option<UserInput>> {
+
+    let collection = db.collection::<UserInput>("User");
+    let user_doc= collection.find_one(doc! { "email": email }, None).await?;
+    if user_doc.is_none() {
+      print!("{}", "is_none******");
+      return Ok(None);
+    }
+    let unwrapped_doc = user_doc.unwrap();
+
+
+    Ok(Some(unwrapped_doc))
+            
+  }

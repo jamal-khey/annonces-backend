@@ -4,8 +4,8 @@ extern crate rocket;
 use dotenv::dotenv;
 use rocket_okapi::openapi_get_routes;
 use rocket_okapi::swagger_ui::{make_swagger_ui, SwaggerUIConfig};
-use rocket::Request;
-use rocket::http::Status;
+// use rocket::Request;
+// use rocket::http::Status;
 
 mod db;
 mod errors;
@@ -47,7 +47,8 @@ fn rocket() -> _ {
                 routes::ads::search_ads_handler,
                 routes::category::get_category,
                 routes::user::signup,
-                routes::user::check_user_name_exist
+                routes::user::check_user_name_exist,
+                routes::user::create_user_session
             ],
         )
         .mount(

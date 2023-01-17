@@ -98,3 +98,10 @@ pub struct UserInput {
 pub struct CheckUserNameInput{
     pub userName: String
 }
+
+#[allow(non_snake_case)]
+#[derive(Debug, Serialize, Deserialize, JsonSchema, Clone)]
+pub struct LoginInput{
+  pub email: String,
+  pub password: String,
+}

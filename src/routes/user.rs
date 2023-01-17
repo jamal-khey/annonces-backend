@@ -7,9 +7,10 @@ use rocket::State;
 use rocket_okapi::{openapi};
 
 
-use crate::db::user;
+use crate::db::user::{self, find_user};
+use crate::errors::response::MyError;
 use crate::models::response::MessageResponse;
-use crate::models::user::{UserInput, CheckUserNameInput};
+use crate::models::user::{UserInput, CheckUserNameInput, LoginInput};
 
 
 /// create a customer document
@@ -57,4 +58,34 @@ pub async fn check_user_name_exist(
             }))));
         }
     }
+}
+
+
+#[openapi(tag = "User")]
+#[post("/api/v1/user/session", data = "<input>")]
+pub async fn create_user_session(
+    db: &State<Database>,
+    input: Json<LoginInput>,
+) -> Result<Json<MessageResponse>, MyError> {
+    let deserialized_user = input.into_inner();
+    
+    // Validate the user's password if Err -> 401
+    
+    //create session
+    //  Ok -> 200 { message: 'User Logged In', accessToken: accessToken, refreshToken: refreshToken}
+    
+    match user::find_user(db, deserialized_user.email).await {
+        Ok(user) => {
+            match user {
+                Some( _user_payload) => Ok(Json(MessageResponse { message: format!("User Name available"),})),
+                None => Err(MyError::build(401, Some("user not found".to_string())))
+            }
+            
+        }
+        Err(_error) => {
+            println!("{:?}", _error);
+            return Err(MyError::build(401, Some("user not found".to_string())));
+        }
+    }
+   
 }
